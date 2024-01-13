@@ -6,8 +6,16 @@ class Character:
         self.image = pygame.transform.scale(self.image, size)
         self.rect = self.image.get_rect()
         screen_width, screen_height = screen.get_size()
-        self.rect.center = (screen_width // 2, screen_height // 2)
+        self.x = screen_width // 2
+        self.y = screen_height // 2
+        self.rect.center = (self.x, self.y)
         self.screen = screen
 
     def display(self):
         self.screen.blit(self.image, self.rect)
+
+    def move(self, x, y):
+        self.x += x
+        self.y += y
+        self.rect.center = (self.x, self.y)
+

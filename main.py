@@ -1,9 +1,8 @@
 # Initialize Pygame
 import sys
-
 import pygame
-
 from game.character import Character
+
 
 pygame.init()
 
@@ -25,7 +24,8 @@ while running:
             running = False
 
     # Draw the character
-    screen.fill((0, 0, 0))  # Fill the screen with black
+    screen.fill((80, 140, 128))  # Fill the screen with black
+    character.move(.001,.001)
     character.display()  # Display the character
 
     # Update the display
