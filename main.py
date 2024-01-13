@@ -1,16 +1,38 @@
-# This is a sample Python script.
+import pygame
+import sys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Initialize Pygame
+pygame.init()
 
+# Constants
+SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Set up the display
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption('Centered Character Example')
 
+# Load the character image
+character = pygame.image.load('images/cato.jpg')
+character = pygame.transform.scale(character, (40, 40))  # Scale the image to 40x40 pixels
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Get the rectangle of the image for positioning
+character_rect = character.get_rect()
+character_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Draw the character
+    screen.fill((0, 0, 0))  # Fill the screen with black
+    screen.blit(character, character_rect)  # Draw the character image
+
+    # Update the display
+    pygame.display.flip()
+
+# Quit Pygame
+pygame.quit()
+sys.exit()
