@@ -1,4 +1,6 @@
 # Initialize Pygame
+import sys
+
 import pygame
 
 from game.character import Character
